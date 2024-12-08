@@ -1009,11 +1009,17 @@ function squareFeetOfPaper(input) {
 
     let accumulator = 0;
     for (i = 0; i < packagesArray.length; i++){
-        let package = packagesArray[i].split("x");
-        const lw = package[0] * package[1];
-        const wh = package[1] * package[2];
-        const hl = package[2] * package[0];
+        // let package = packagesArray[i].split("x");
+        // const lw = package[0] * package[1];
+        // const wh = package[1] * package[2];
+        // const hl = package[2] * package[0];
+        // const slack = Math.min(lw, wh, hl);
+        let [l, w, h] = packagesArray[i].split("x");
+        const lw = l * w;
+        const wh = w * h;
+        const hl = h * l;
         const slack = Math.min(lw, wh, hl);
+
         accumulator += (lw + wh + hl) * 2 + slack;
 
     }   
@@ -1023,9 +1029,12 @@ function squareFeetOfPaper(input) {
 
 squareFeetOfPaper(input);
 
-// let lw = 2 * 3;
-// let wh = 3 * 4;
-// let hl = 4 * 2;
-// let slack = Math.min(lw, wh, hl);
-// console.log(slack);
-// console.log((lw + wh + hl) * 2 + slack);
+// Example, result should be 58
+let lw = 2 * 3;
+let wh = 3 * 4;
+let hl = 4 * 2;
+let slack = Math.min(lw, wh, hl);
+console.log(slack);
+console.log((lw + wh + hl) * 2 + slack);
+
+
