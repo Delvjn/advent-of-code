@@ -1003,38 +1003,77 @@ const input =
 21x2x22
 14x12x8`
 
+// Part One
 function squareFeetOfPaper(input) {
     let packagesArray = input.split("\n");
     // console.log(result);
 
     let accumulator = 0;
     for (i = 0; i < packagesArray.length; i++){
-        // let package = packagesArray[i].split("x");
+        // const package = packagesArray[i].split("x");
         // const lw = package[0] * package[1];
         // const wh = package[1] * package[2];
         // const hl = package[2] * package[0];
         // const slack = Math.min(lw, wh, hl);
-        let [l, w, h] = packagesArray[i].split("x");
+        const [l, w, h] = packagesArray[i].split("x");
         const lw = l * w;
         const wh = w * h;
         const hl = h * l;
         const slack = Math.min(lw, wh, hl);
 
         accumulator += (lw + wh + hl) * 2 + slack;
+    } 
 
-    }   
-    console.log(accumulator);
-    
+    return accumulator;    
 }
 
-squareFeetOfPaper(input);
 
-// Example, result should be 58
-let lw = 2 * 3;
-let wh = 3 * 4;
-let hl = 4 * 2;
-let slack = Math.min(lw, wh, hl);
-console.log(slack);
-console.log((lw + wh + hl) * 2 + slack);
+// console.log(squareFeetOfPaper(input));
 
+// Example Part One, result should be 58
+// let lw = 2 * 3;
+// let wh = 3 * 4;
+// let hl = 4 * 2;
+// let slack = Math.min(lw, wh, hl);
+// console.log(slack);
+// console.log((lw + wh + hl) * 2 + slack); // 58
+
+
+// part Two
+function feetOfRibbon(input) {
+    let packagesArray = input.split("\n");
+    // console.log(result);
+
+    let accumulator = 0;
+    for (i = 0; i < packagesArray.length; i++){
+        let [l, w, h] = packagesArray[i].split("x");
+        const lw = l + l + w + w;
+        const wh = w + w + h + h;
+        const hl = h + h + l + l;
+        const totalRibbonSide = Math.min(lw, wh, hl);
+        const bow = l * w * h;
+
+        // Ribbon length per package
+        accumulator += totalRibbonSide + bow;
+
+
+    }   
+
+    return accumulator;    
+}
+
+console.log(feetOfRibbon(input));
+
+// Example Part Two, result should be 14
+const l = 2;
+const w = 3;
+const h = 4;
+const lw = l + l + w + w;
+const wh = w + w + h + h;
+const hl = h + h + l + l;
+const totalRibbonSide = Math.min(lw, wh, hl);
+const bow = l * w * h;
+console.log(totalRibbonSide);
+console.log(bow);
+console.log(bow + totalRibbonSide); // 34
 
