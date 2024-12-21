@@ -1042,16 +1042,23 @@ function squareFeetOfPaper(input) {
 // part Two
 function feetOfRibbon(input) {
     let packagesArray = input.split("\n");
-    // console.log(result);
+    // console.log(packagesArray);
 
     let accumulator = 0;
     for (i = 0; i < packagesArray.length; i++){
         let [l, w, h] = packagesArray[i].split("x");
+        l = Number(l);
+        w = Number(w);
+        h = Number(h);
+        // console.log(l, w, h)
         const lw = l + l + w + w;
         const wh = w + w + h + h;
         const hl = h + h + l + l;
         const totalRibbonSide = Math.min(lw, wh, hl);
         const bow = l * w * h;
+        // console.log(totalRibbonSide);
+        // console.log(bow);
+        // console.log(bow + totalRibbonSide); 
 
         // Ribbon length per package
         accumulator += totalRibbonSide + bow;
@@ -1065,9 +1072,21 @@ function feetOfRibbon(input) {
 console.log(feetOfRibbon(input));
 
 // Example Part Two, result should be 14
-const l = 2;
+// const l = 2;
+// const w = 3;
+// const h = 4;
+// const lw = l + l + w + w;
+// const wh = w + w + h + h;
+// const hl = h + h + l + l;
+// const totalRibbonSide = Math.min(lw, wh, hl);
+// const bow = l * w * h;
+// console.log(totalRibbonSide);
+// console.log(bow);
+// console.log(bow + totalRibbonSide); // 34
+
+const l = 20;
 const w = 3;
-const h = 4;
+const h = 11;
 const lw = l + l + w + w;
 const wh = w + w + h + h;
 const hl = h + h + l + l;
